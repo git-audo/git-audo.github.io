@@ -1,0 +1,42 @@
+body {
+    background: #bee7a5;
+    color: #124429;
+}
+
+#visuals {
+  -webkit-mask-image: -webkit-gradient(linear, left 50%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
+
+#logo {
+    animation: shake 6.82s cubic-bezier(.36,.07,.19,.97) both;
+    animation-iteration-count: infinite;
+}
+
+circle:hover {
+    stroke: #959292;
+    stroke-width: 8;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate3d(0px, 40px, 0px);
+        animation-timing-function: ease-in;
+    }
+
+    25% {
+        transform: translate3d(0px, 45px, 0px);
+    }
+
+    50% {
+        transform: translate3d(0px, 50px, 0px);
+        animation-timing-function: ease-out;
+    }
+    
+    75% {
+        transform: translate3d(0px, 45px, 0px);
+    }
+
+    100% {
+        transform: translate3d(0px, 40px, 0px);
+    }
+}
