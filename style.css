@@ -1,10 +1,10 @@
 body {
-    background: #bee7a5;
-    color: #124429;
+    background: #141414;
+    color: #eff9eb;
 }
 
 #visuals {
-  -webkit-mask-image: -webkit-gradient(linear, left 50%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+  -webkit-mask-image: -webkit-gradient(linear, left 32%, left bottom, from(rgba(0,0,0,1)), to(rgba(20,20,20,0)));
 }
 
 #logo {

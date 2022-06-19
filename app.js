@@ -1,16 +1,19 @@
 
 const config = {
-    gridW: 16,
-    gridH: 16,
-    circleR: 14,
-    padding: 10,
+    gridW: 12,
+    gridH: 15,
+    circleR: 16,
+    padding: 8,
     colors: [
-        '#7ABB8E',
-        '#9FC8A1',
-        '#FCF7F1',
-        '#78CBCF',
-        '#5EBDC3',
+        '#eff9eb',
+        '#f3c352',
+        '#2c625d',
+        '#bc3f00',
     ]
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 function rand(max) {
@@ -21,26 +24,28 @@ const spacing = (window.innerWidth - 2 * config.padding) / config.gridW
 
 const rows = [...Array(config.gridH).keys()]
 const grid = rows.map(r => [...Array(config.gridW).keys()].map(v => {
-    return { 
+    return {
         x: spacing / 2 + v * spacing, 
         y: spacing / 2 + r * spacing,
-        r: rand(30) < 1 ? 20 : config.circleR
+        r: rand(20) < 1 ? 25 : config.circleR
     }
 }))
 
 const visuals = d3.select('#visuals')
 
-grid.forEach((row, i) => {
-    row.forEach((p) => {
-        visuals.append('circle')
-            .attr('r', p.r)
-            .attr('cx', config.padding + p.x)
-            .attr('cy', config.padding + p.y)
-            .attr('fill', config.colors[rand(i+2) % config.colors.length])
-            .on("mouseover", function (d) {
-                
-             }).on("mouseout", function (d) {
-                d3.select(this.parentNode).select("text").style("fill", "black");
-             })
+function drawGrid() {
+    d3.selectAll("#visuals > *").remove()
+    
+    grid.forEach((row, i) => {
+        row.forEach((p) => {
+            visuals.append('circle')
+                .attr('r', p.r)
+                .attr('cx', config.padding + p.x)
+                .attr('cy', config.padding + p.y)
+                .attr('fill', config.colors[rand(i+2) % config.colors.length])
+        })
     })
-})
+
+}
+
+drawGrid()
