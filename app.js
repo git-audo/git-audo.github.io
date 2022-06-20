@@ -1,9 +1,11 @@
 
 const config = {
     gridW: 12,
-    gridH: 15,
+    gridH: 22,
     circleR: 16,
     padding: 8,
+    anomalies: 20,
+    anomalyR: 25,
     colors: [
         '#eff9eb',
         '#f3c352',
@@ -20,21 +22,39 @@ function rand(max) {
    return Math.floor(Math.random() * max)
 }
 
-const spacing = (window.innerWidth - 2 * config.padding) / config.gridW
+let spacing = (window.innerWidth - 2 * config.padding) / config.gridW
 
-const rows = [...Array(config.gridH).keys()]
-const grid = rows.map(r => [...Array(config.gridW).keys()].map(v => {
-    return {
-        x: spacing / 2 + v * spacing, 
-        y: spacing / 2 + r * spacing,
-        r: rand(20) < 1 ? 25 : config.circleR
-    }
-}))
+function generateGrid() {
+    spacing = (window.innerWidth - 2 * config.padding) / config.gridW    
+    const rows = [...Array(config.gridW).keys()]
+    const grid = rows.map(r => [...Array(config.gridH).keys()].map(v => {
+        return {
+            x: spacing / 2 + v * spacing, 
+            y: spacing / 2 + r * spacing,
+            r: rand(100) < config.anomalies ? config.anomalyR : config.circleR,
+            color: config.colors[rand(v+2) % config.colors.length]
+        }
+    }))
 
-const visuals = d3.select('#visuals')
+    return grid
+}
 
-function drawGrid() {
+function updateGrid({ grid, generateColors = false }) {
+    grid.map((row, i) => {
+        row.map((p, j) => {
+            p.x = spacing / 2 + i * spacing, 
+            p.y = spacing / 2 + j * spacing,
+            p.r = rand(100) < config.anomalies ? config.anomalyR : config.circleR,
+            p.color = generateColors ? config.colors[rand(j+2) % config.colors.length] : p.color
+        })
+    })
+
+    return grid
+}
+
+function drawGrid({ grid }) {
     d3.selectAll("#visuals > *").remove()
+    const visuals = d3.select('#visuals')    
     
     grid.forEach((row, i) => {
         row.forEach((p) => {
@@ -42,10 +62,39 @@ function drawGrid() {
                 .attr('r', p.r)
                 .attr('cx', config.padding + p.x)
                 .attr('cy', config.padding + p.y)
-                .attr('fill', config.colors[rand(i+2) % config.colors.length])
+                .attr('fill', p.color)
         })
     })
 
 }
 
-drawGrid()
+function updateConfig() {
+    const radius = d3.select('#circleRInput').property("value")
+    if (radius) config.circleR = Number(radius)
+
+    const anomalies = d3.select('#anomaliesInput').property("value")
+    if (anomalies) config.anomalies = Number(anomalies)
+
+    const anomalyR = d3.select('#anomalyRInput').property("value")
+    if (anomalyR) config.anomalyR = Number(anomalyR)
+
+    const gridW = d3.select('#gridWInput').property("value")
+    if (gridW) {
+        config.gridW = Number(gridW)
+        grid = generateGrid()
+        drawGrid({ grid })
+        return
+    }
+
+    grid = updateGrid({ grid })
+    drawGrid({ grid })
+}
+
+function updateColors() {
+    grid = updateGrid({ grid, generateColors: true })
+    drawGrid({ grid })
+}
+
+let grid = generateGrid()
+grid = updateGrid({ grid })
+drawGrid({ grid })

@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css"></link>    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+
+  <body>  
+    <svg id="visuals" class="w-full h-3/4"></svg>    
+    <div class="fixed w-full px-12 pt-6 text-5xl bottom-16">
+      <div class="flex flex-col">
+        <label>Density</label>
+        <input id="gridWInput" type="range" min="4" max="22" class="bg-gray-800 mb-4" oninput="updateConfig()"/>
+        <label>Radius</label>        
+        <input id="circleRInput" type="range" min="0.1" max="45" class="bg-gray-800 my-4" oninput="updateConfig()"/>
+        <label>Anomaly Frequency</label>                        
+        <input id="anomaliesInput" type="range" min="1" max="100" class="bg-gray-800 my-4" oninput="updateConfig()"/>
+        <label>Anomaly Radius</label>        
+        <input id="anomalyRInput" type="range" min="4" max="40" class="bg-gray-800 mt-4" oninput="updateConfig()"/>        
+      </div>
+    </div>
+  </body>    
+<html>
+
+<script src="app.js"></script>
