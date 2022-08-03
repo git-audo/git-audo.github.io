@@ -25,11 +25,17 @@ function rand(max) {
 let spacing = (window.innerWidth - 2 * config.padding) / config.gridW
 
 function generateGrid() {
-    spacing = (window.innerWidth - 2 * config.padding) / config.gridW    
+    let visualsW = window.innerWidth
+    if (window.innerWidth > 1300) {
+        visualsW *= 0.33
+        config.gridH = 36
+    }
+
+    spacing = (visualsW - 2 * config.padding) / config.gridW
     const rows = [...Array(config.gridW).keys()]
     const grid = rows.map(r => [...Array(config.gridH).keys()].map(v => {
         return {
-            x: spacing / 2 + v * spacing, 
+            x: spacing / 2 + v * spacing,
             y: spacing / 2 + r * spacing,
             r: rand(100) < config.anomalies ? config.anomalyR : config.circleR,
             color: config.colors[rand(v+2) % config.colors.length]
@@ -42,7 +48,7 @@ function generateGrid() {
 function updateGrid({ grid, generateColors = false }) {
     grid.map((row, i) => {
         row.map((p, j) => {
-            p.x = spacing / 2 + i * spacing, 
+            p.x = spacing / 2 + i * spacing,
             p.y = spacing / 2 + j * spacing,
             p.r = rand(100) < config.anomalies ? config.anomalyR : config.circleR,
             p.color = generateColors ? config.colors[rand(j+2) % config.colors.length] : p.color
@@ -54,8 +60,8 @@ function updateGrid({ grid, generateColors = false }) {
 
 function drawGrid({ grid }) {
     d3.selectAll("#visuals > *").remove()
-    const visuals = d3.select('#visuals')    
-    
+    const visuals = d3.select('#visuals')
+
     grid.forEach((row, i) => {
         row.forEach((p) => {
             visuals.append('circle')

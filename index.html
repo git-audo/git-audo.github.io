@@ -1,33 +1,39 @@
 <html>
   <head>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet" type="text/css"></link>    
+    <link href="style.css" rel="stylesheet" type="text/css"></link>
     <script src="https://d3js.org/d3.v7.min.js"></script>
   </head>
 
-  <body>  
-    <svg id="visuals" class="w-full h-2/5 fading"></svg>
-    <div class="p-12">
-      <h1 class="text-6xl font-extrabold">Learning how to build systems at scale</h1>
-      <p class="text-5xl pt-12">
-        I'm a software engineer working in Italy, currently employed at TheFork.
-      </p>
-      
-      <p class="text-5xl pt-12">
-        Topics in which I am interested in
-      </p>
-      <ul class="list-disc text-5xl pl-10 py-8 space-y-4">
-        <li>Distributed systems and scalability</li>
-        <li>Computer graphics</li>
-        <li>Low level programming</li>      
-      </ul>
+  <body>
+      <div class="h-full md:flex">
+        <div class="w-full h-2/5 md:shrink-0 md:w-2/6 md:h-full">
+          <svg id="visuals" class="w-full h-full fading"></svg>
+        </div>
+        <div class="p-8">
+          <div class="p-12 text-6xl md:text-xl">
+            <h1 class="md:text-3xl font-extrabold">Learning how to build systems at scale</h1>
+            <p class="pt-12">
+              I'm a software engineer working in Italy, currently employed at TheFork.
+            </p>
 
-      <ul class="text-5xl pt-24 pl-10 space-y-8 underline">
-        <li class="cursor-pointer"><a href="https://github.com/git-audo">Github Profile</a></li>
-        <li><a href="./lab.html">Playground</a></li>
-      </ul>
-    </div>
-  </body>    
-<html>
+            <p class="pt-12 md:pt-8">
+              Topics in which I am interested in
+            </p>
+            <ul class="list-disc pl-10 py-8 space-y-4 md:py-2 md:space-y-1">
+              <li>Distributed systems and scalability</li>
+              <li>Computer graphics</li>
+              <li>Low level programming</li>
+            </ul>
+
+            <ul class="pt-24 pl-10 space-y-8 md:space-y-2 underline">
+              <li class="cursor-pointer"><a href="https://github.com/git-audo">Github Profile</a></li>
+              <li><a href="./lab.html">Playground</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
 
 <script src="app.js"></script>
