@@ -1,39 +1,42 @@
 <html>
-  <head>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet" type="text/css"></link>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-  </head>
 
-  <body>
-      <div class="h-full lg:flex">
-        <div class="w-full h-2/5 lg:shrink-0 lg:w-2/6 lg:h-full">
-          <svg id="visuals" class="w-full h-full fading"></svg>
-        </div>
-        <div class="p-8">
-          <div class="p-12 text-5xl lg:text-xl">
-            <h1 class="lg:text-3xl font-extrabold">Learning how to build systems at scale</h1>
-            <p class="pt-12">
-              I'm a software engineer working in Italy, currently employed at TheFork.
-            </p>
+<head>
+  <link href="lib/tailwind.min.css" rel="stylesheet" type="text/css">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  </link>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
 
-            <p class="pt-12 lg:pt-8">
-              Topics in which I am interested in
-            </p>
-            <ul class="list-disc pl-10 py-8 space-y-4 lg:py-2 lg:space-y-1">
-              <li>Distributed systems and scalability</li>
-              <li>Computer graphics</li>
-              <li>Low level programming</li>
-            </ul>
+<body>
+  <div class="h-full lg:flex">
+    <div class="w-full h-2/5 lg:shrink-0 lg:w-2/6 lg:h-full">
+      <svg id="visuals" class="w-full h-full fading"></svg>
+    </div>
+    <div class="p-8">
+      <div class="p-12 text-5xl lg:text-xl">
+        <h1 class="lg:text-3xl font-extrabold">Learning how to build systems at scale</h1>
+        <p class="pt-12">
+          I'm a software engineer working in Italy, currently employed at TheFork.
+        </p>
 
-            <ul class="pt-24 pl-10 space-y-8 lg:space-y-2 underline">
-              <li class="cursor-pointer"><a href="https://github.com/git-audo">Github Profile</a></li>
-              <li><a href="./lab.html">Playground</a></li>
-            </ul>
-          </div>
-        </div>
+        <p class="pt-12 lg:pt-8">
+          Topics in which I am interested in
+        </p>
+        <ul class="list-disc pl-10 py-8 space-y-4 lg:py-2 lg:space-y-1">
+          <li>Distributed systems and scalability</li>
+          <li>Computer graphics</li>
+          <li>Low level programming</li>
+        </ul>
+
+        <ul class="pt-24 pl-10 space-y-8 lg:space-y-2 underline">
+          <li class="cursor-pointer"><a href="https://github.com/git-audo">Github Profile</a></li>
+          <li><a href="./lab.html">Playground</a></li>
+        </ul>
       </div>
-  </body>
+    </div>
+  </div>
+</body>
+
 </html>
 
 <script src="app.js"></script>
