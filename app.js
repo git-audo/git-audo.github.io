@@ -1,5 +1,5 @@
 const config = {
-  gridW: 15,
+  gridW: 14,
   gridH: 22,
   circleR: 16,
   padding: 8,

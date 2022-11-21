@@ -1,3 +1,9 @@
+@media (max-width: 1000px) {
+    #visualsWrapper {
+        height: 32vh;
+    }
+}
+
 body {
     background: #141414;
     color: #eff9eb;
